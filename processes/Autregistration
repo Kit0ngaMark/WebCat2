@@ -1,0 +1,32 @@
+<?php
+$servername = "localhost";
+$db_username = "root"; 
+$db_password = ""; 
+$database = "authordb";
+
+$conn = new mysqli($servername, $db_username, $db_password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $AuthorFullName = $_POST["authorFullName"];
+    $AuthorEmail=$_POST["authorEmail"];
+    $AuthorAddress = $_POST["authorAddress"];
+    $AuthorBiography = $_POST["authorBiography"];
+    $AuthorDateOfBirth = $_POST["authorDateOfBirth"];
+    $AuthorSuspended = $_POST["authorSuspended"];
+
+    $sql = "INSERT INTO authorstb ( authorFullName, authorEmail, authorAddress , authorBiography, authorDateOfBirth, authorSuspended ) VALUES ('$AuthorFullName', '$AuthorEmail', '$AuthorAddress','$AuthorBiography','$AuthorDateOfBirth','$AuthorSuspended')";
+
+    if ($conn->query($sql) === true) {
+        echo "Signup successful!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+?>
+
