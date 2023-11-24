@@ -2,7 +2,6 @@
 include('configs/c0nstantsss.php');
 include('configs/DbConn.php');
 
-// Check if the form is submitted for registration
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $AuthorID = $_POST["authorID"];
     $AuthorFullName = $_POST["authorFullName"];
@@ -10,10 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $AuthorAddress = $_POST["authorAddress"];
     $AuthorBiography = $_POST["authorBiography"];
     $AuthorDateOfBirth = $_POST["authorDateOfBirth"];
-    // Assuming authorSuspended is a checkbox in your form
+
     $AuthorSuspended = isset($_POST["authorSuspended"]) ? 1 : 0;
 
-    // Prepare and execute the SQL statement
+
     $sql = "INSERT INTO authorstb (authorID, authorFullName, authorEmail, authorAddress, authorBiography, authorDateOfBirth, authorSuspended) 
             VALUES (:AuthorID, :AuthorFullName, :AuthorEmail, :AuthorAddress, :AuthorBiography, :AuthorDateOfBirth, :AuthorSuspended)";
 
