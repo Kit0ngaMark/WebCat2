@@ -1,0 +1,38 @@
+<!-- index.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cat(2).css" />
+    <title>Author Registration</title>
+</head> <center>
+<body>
+    <form action="AutRegistration.php" method="post">
+        
+        <label for="authorID">Author id:</label>
+        <input type="text" name="authorID" required>
+
+        <label for="authorFullName">Full Name:</label>
+        <input type="text" name="authorFullName" required>
+
+        <label for="authorEmail">Email:</label>
+        <input type="email" name="authorEmail" required>
+
+        <label for="authorAddress">Address:</label>
+        <input type="text" name="authorAddress">
+
+        <label for="authorBiography">Biography:</label>
+        <textarea name="authorBiography" rows="5"></textarea>
+
+        <label for="authorDateOfBirth">Date of Birth:</label>
+        <input type="date" name="authorDateOfBirth">
+
+        <label for="authorSuspended">Suspended:</label>
+        <input type="checkbox" name="authorSuspended">
+        <!-- Include other fields as per your requirements -->
+
+        <input type="submit" value="Submit">
+    </form>
+</body></center>
+</html>
