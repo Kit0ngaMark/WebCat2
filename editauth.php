@@ -2,31 +2,29 @@
 include('configs/c0nstantsss.php');
 include('configs/DbConn.php');
 
-// Check if the author ID is provided in the URL
+
 if (isset($_GET['id'])) {
     $authorID = $_GET['id'];
 
-    // Fetch details of the selected author
     $sql = "SELECT * FROM Authorstb WHERE AuthorId = :authorID";
     $stmt = $DbConn->prepare($sql);
     $stmt->bindParam(':authorID', $authorID, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Check if the author exists
-    if ($stmt->rowCount() > 0) {
+       if ($stmt->rowCount() > 0) {
         $author = $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
         echo "Author not found. Author ID: " . $authorID;
-        exit; // Stop execution if the author is not found
+        exit; 
     }
 } else {
     echo "Author ID not provided in the URL.";
-    exit; // Stop execution if no author ID is provided
+    exit; 
 }
 
-// Check if the form is submitted for updating
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect updated form data
+    
     $updatedFullName = $_POST['updatedFullName'];
     $updatedEmail = $_POST['updatedEmail'];
     $updatedAddress = $_POST['updatedAddress'];
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $updatedSuspended = isset($_POST['updatedSuspended']) ? 1 : 0;
 
     try {
-        // Update author's information in the database
+       
         $updateSql = "UPDATE Authorstb SET
             AuthorFullName = :updatedFullName,
             AuthorEmail = :updatedEmail,
